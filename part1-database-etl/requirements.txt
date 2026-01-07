@@ -1,0 +1,17 @@
+# Data Manipulation
+pandas>=1.3.0
+numpy>=1.21.0
+
+# Database Connectivity
+SQLAlchemy>=1.4.0
+PyMySQL>=1.0.2
+
+# Utilities
+python-dateutil>=2.8.2
+
+Dependency Breakdown
+- Pandas : Used for reading CSV files, handling missing values, and deduplication logic.
+- NumPy: Supports Pandas for mathematical operations and handling NaN values.
+- SQLAlchemy: The Toolkit / ORM used to create the database engine and manage the connection pool.
+- PyMySQL: The driver that allows SQLAlchemy to communicate specifically with a MySQL database.
+- re (Native): Used within the ETL script for Regular Expression pattern matching to standardize phone formats.

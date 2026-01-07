@@ -1,0 +1,39 @@
+=====================================================
+FLEXIMART ETL DATA QUALITY REPORT
+Date: 2026-01-07
+=====================================================
+
+1. EXTRACTION SUMMARY
+-----------------------------------------------------
+- customers_raw.csv: 26 records processed
+- products_raw.csv:  20 records processed
+- sales_raw.csv:     41 records processed
+
+2. TRANSFORMATION (CLEANING) SUMMARY
+-----------------------------------------------------
+- Duplicates Removed:
+    * Customers: 1
+    * Products:  0
+    * Sales:     1
+    
+- Missing Values Handled:
+    * Emails (filled with default): 5
+    * Prices (filled with 0.0): 3
+    * Stock (filled with 0): 1
+    * Customer/Product IDs (dropped): 5
+
+- Standardizations Applied:
+    * Phone Formats: 25 records standardized to +91-XXXXXXXXXX
+    * Category Names: 9 records normalized to Title Case
+    * Date Formats: 35 records converted to YYYY-MM-DD
+
+3. LOADING SUMMARY
+-----------------------------------------------------
+- Target Database: postgresql (fleximart)
+- Records Loaded Successfully:
+    * Table 'customers': 25
+    * Table 'products':  20
+    * Table 'orders':    35
+
+- Status: SUCCESS
+=====================================================
