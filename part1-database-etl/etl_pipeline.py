@@ -9,7 +9,7 @@ from datetime import datetime
 DB_TYPE = 'postgresql'
 DB_DRIVER = 'psycopg2'
 DB_USER = 'postgres'
-DB_PASS = 'parasa42914'  # Replace with your actual password
+DB_PASS = 'password'  # Replace with your actual password
 DB_HOST = 'localhost'
 DB_PORT = '5433'
 DB_NAME = 'fleximart'
