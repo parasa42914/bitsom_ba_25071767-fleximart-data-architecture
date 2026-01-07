@@ -1,0 +1,44 @@
+=====================================================
+FLEXIMART ETL DATA QUALITY REPORT
+Date: 2026-01-07
+=====================================================
+
+1. EXTRACTION SUMMARY
+-----------------------------------------------------
+- customers_raw.csv: 26 records processed
+- products_raw.csv:  20 records processed
+- sales_raw.csv:     41 records processed
+
+2. TRANSFORMATION (CLEANING) SUMMARY
+-----------------------------------------------------
+- Duplicates Removed:
+    * Customers: 1
+    * Products:  0
+    * Sales:     1
+    
+- Missing Values Handled:
+    * Emails (filled with default): 5
+    * Prices (filled with 0.0): 3
+    * Stock (filled with 0): 1
+    * Customer/Product IDs (dropped): 5
+
+- Standardizations Applied:
+    * Phone Formats: 25 records standardized to +91-XXXXXXXXXX
+    * Category Names: 9 records normalized to Title Case
+    * Date Formats: 35 records converted to YYYY-MM-DD
+
+3. LOADING SUMMARY
+-----------------------------------------------------
+- Target Database: postgresql (fleximart)
+- Records Loaded Successfully:
+    * Table 'customers': 25
+    * Table 'products':  20
+    * Table 'orders':    35
+
+- Status: FAILED: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "customers_email_key"
+DETAIL:  Key (email)=(rahul.sharma@gmail.com) already exists.
+
+[SQL: INSERT INTO customers (first_name, last_name, email, phone, city, registration_date) VALUES (%(first_name__0)s, %(last_name__0)s, %(email__0)s, %(phone__0)s, %(city__0)s, %(registration_date__0)s), (%(first_name__1)s, %(last_name__1)s, %(email__1)s,  ... 2480 characters truncated ... ame__24)s, %(last_name__24)s, %(email__24)s, %(phone__24)s, %(city__24)s, %(registration_date__24)s)]
+[parameters: {'email__0': 'rahul.sharma@gmail.com', 'phone__0': '+91-9876543210', 'last_name__0': 'Sharma', 'registration_date__0': datetime.date(2023, 1, 15), 'first_name__0': 'Rahul', 'city__0': 'Bangalore', 'email__1': 'priya.patel@yahoo.com', 'phone__1': '+91-9988776655', 'last_name__1': 'Patel', 'registration_date__1': datetime.date(2023, 2, 20), 'first_name__1': 'Priya', 'city__1': 'Mumbai', 'email__2': 'amit@fleximart.com', 'phone__2': '+91-9765432109', 'last_name__2': 'Kumar', 'registration_date__2': datetime.date(2023, 3, 10), 'first_name__2': 'Amit', 'city__2': 'Delhi', 'email__3': 'sneha.reddy@gmail.com', 'phone__3': '+91-9123456789', 'last_name__3': 'Reddy', 'registration_date__3': datetime.date(2023, 4, 15), 'first_name__3': 'Sneha', 'city__3': 'Hyderabad', 'email__4': 'vikram.singh@outlook.com', 'phone__4': '+91-9988112233', 'last_name__4': 'Singh', 'registration_date__4': datetime.date(2023, 5, 22), 'first_name__4': 'Vikram', 'city__4': 'Chennai', 'email__5': 'anjali.mehta@gmail.com', 'phone__5': '+91-9876543210', 'last_name__5': 'Mehta', 'registration_date__5': datetime.date(2023, 6, 18), 'first_name__5': 'Anjali', 'city__5': 'Bangalore', 'email__6': 'ravi@fleximart.com', 'phone__6': '+91-9876501234', 'last_name__6': 'Verma', 'registration_date__6': datetime.date(2023, 7, 25), 'first_name__6': 'Ravi', 'city__6': 'Pune', 'email__7': 'pooja.iyer@gmail.com', 'phone__7': '+91-9123456780', 'last_name__7': 'Iyer', 'registration_date__7': datetime.date(2023, 8, 15), 'first_name__7': 'Pooja', 'city__7': 'Bangalore', 'email__8': 'karthik.nair@yahoo.com', 'phone__8': '+91-9988776644' ... 50 parameters truncated ... 'first_name__16': 'Rajesh', 'city__16': 'Delhi', 'email__17': 'kavya@fleximart.com', 'phone__17': '+91-9988112200', 'last_name__17': 'Reddy', 'registration_date__17': datetime.date(2024, 2, 18), 'first_name__17': 'Kavya', 'city__17': 'Hyderabad', 'email__18': 'arun.pillai@outlook.com', 'phone__18': '+91-9876543298', 'last_name__18': 'Pillai', 'registration_date__18': datetime.date(2024, 2, 25), 'first_name__18': 'Arun', 'city__18': 'Kochi', 'email__19': 'swati.desai@gmail.com', 'phone__19': '+91-9123456712', 'last_name__19': 'Desai', 'registration_date__19': datetime.date(2024, 3, 1), 'first_name__19': 'Swati', 'city__19': 'Pune', 'email__20': 'nikhil.bose@gmail.com', 'phone__20': '+91-9988776600', 'last_name__20': 'Bose', 'registration_date__20': datetime.date(2024, 3, 10), 'first_name__20': 'Nikhil', 'city__20': 'Kolkata', 'email__21': 'priyanka.jain@yahoo.com', 'phone__21': '+91-9876543287', 'last_name__21': 'Jain', 'registration_date__21': datetime.date(2024, 3, 15), 'first_name__21': 'Priyanka', 'city__21': 'Indore', 'email__22': 'rohit@fleximart.com', 'phone__22': '+91-9988112211', 'last_name__22': 'Kapoor', 'registration_date__22': datetime.date(2024, 3, 20), 'first_name__22': 'Rohit', 'city__22': 'Chandigarh', 'email__23': 'meera.nambiar@gmail.com', 'phone__23': '+91-9123456723', 'last_name__23': 'Nambiar', 'registration_date__23': datetime.date(2024, 3, 25), 'first_name__23': 'Meera', 'city__23': 'Trivandrum', 'email__24': 'sanjay.agarwal@gmail.com', 'phone__24': '+91-9876543276', 'last_name__24': 'Agarwal', 'registration_date__24': datetime.date(2024, 3, 28), 'first_name__24': 'Sanjay', 'city__24': 'Lucknow'}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+=====================================================
